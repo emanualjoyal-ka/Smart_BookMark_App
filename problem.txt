@@ -1,2 +1,0 @@
-1,troubled with the supabase.js,createServerClient() function,because i did the old way first,like no need to do get(),set(),remove() for cookies,only getall() nand setall()
-2,setting up supabase
