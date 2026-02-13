@@ -23,11 +23,27 @@ const FeatureGrid = () => {
   return (
      <div className="grid md:grid-cols-3 gap-6 mt-12">
           {features.map((items,index)=>(
-            <div key={index} className="p-6 bg-white rounded-lg shadow-sm">
-                <div className="text-3xl mb-3">{items.icon}</div>
-                <h3 className="font-semibold mb-2">{items.title}</h3>
-                <p className="text-gray-600 text-sm">{items.description}</p>
+            // <div key={index} className="p-6 bg-white rounded-lg shadow-sm hover:shadow-xl  hover:transform hover:scale-105 hover:translate-y-[-10px] transition-transform duration-200">
+            //     <p className="text-3xl text-center mb-3">{items.icon}</p>
+            //     <h3 className="font-semibold text-center mb-2">{items.title}</h3>
+            //     <p className="text-gray-600 text-center text-sm">{items.description}</p>
+            // </div>
+            <div className="relative rounded-xl overflow-hidden">
+  
+            <div className={`absolute inset-0 
+                bg-[#4296FF] 
+                animate-spin 
+                [animation-duration:10s] rounded-full blur-2xl`}>
             </div>
+            <div className="relative m-[2px] bg-white rounded-xl p-6">
+                <p className="text-3xl text-center mb-3">{items.icon}</p>
+                <h3 className="font-semibold text-center mb-2">{items.title}</h3>
+                <p className="text-gray-600 text-center text-sm">
+                {items.description}
+                </p>
+        </div>
+
+</div>
           ))}
         </div>
   )

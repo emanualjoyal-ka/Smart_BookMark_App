@@ -1,9 +1,9 @@
 import React from 'react'
 import AuthButton from './AuthButton'
 
-const Header = () => {
+const Header = ({user}) => {
   return (
-    <div className='py-4 md:py-3 px-4 bg-[#F8FAFC] border-b-2 border-[#EFF6FF] shadow-md md:border-none md:shadow-none md:py-5 md:px-15 fixed top-0 w-full flex justify-between items-center'>
+    <div className='py-4 md:py-3 px-4 bg-[#F8FAFC] z-[1] border-b-2 border-[#EFF6FF] shadow-md md:border-none md:shadow-none md:py-5 md:px-15 fixed top-0 w-full flex justify-between items-center'>
         <div className="flex">
         <div className='w-6 md:w-10'>
           <svg className='w-full h-full' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +12,7 @@ const Header = () => {
         </div>
         <p className='text-xl md:text-3xl text-[#0F172A] tracking-wide font-bold'>Smart <span className="text-[#4296FF]">Bookmark</span></p>
         </div>
-        <AuthButton/>
+        <AuthButton user={user}/>
     </div>
   )
 }

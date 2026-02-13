@@ -1,9 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-// import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
-import { createClient } from "@/lib/supabase-browser";
+// import { createClient } from "@/lib/supabase-browser";
+import { createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,19 +22,34 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const supabase = createClient();
-  const response = await supabase.auth.getUser();
-  const user = response?.data?.user;
+  // ✅ cookies must be awaited
+  const cookieStore = await cookies();
+
+  // ✅ pass URL, KEY, and cookie handlers
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    {
+      cookies: {
+        getAll() {
+          return cookieStore.getAll();
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            cookieStore.set(name, value, options);
+          });
+        },
+      },
+    }
+  );
+
+  const { data: { user } } = await supabase.auth.getUser();
 
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}>
-       {/* <div className="flex flex-col h-screen"> */}
-        <Header user={user}/>
-        
+        <Header user={user} />
         {children}
-        {/* <Footer/> */}
-       {/* </div> */}
         <LoadingScreen/>
       </body>
     </html>

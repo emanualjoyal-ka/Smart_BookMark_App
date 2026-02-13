@@ -1,5 +1,6 @@
 "use client";
 import { createClient } from "@/lib/supabase-browser";
+import { useRouter } from "next/navigation";
 
 const AuthButton = ({ user }) => {
     
@@ -22,31 +23,32 @@ const AuthButton = ({ user }) => {
     }
   };
 
+  const router = useRouter()
+
   // When user clicks "Sign Out"
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    // Refresh the page to update UI
-    window.location.reload();
-  };
+  await supabase.auth.signOut();
+  router.refresh(); // ✅ this updates server components
+};
 
   // If user is logged in, show sign out button
   if (user) {
     return (
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 md:gap-4">
         {/* Show user's email with small avatar */}
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">
+        <div className="items-center gap-2 hidden md:flex">
+          <div className="w-8 md:w-10 h-8 md:h-10 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">
             {user.email?.charAt(0).toUpperCase()}
           </div>
-          <span className="text-sm text-gray-600 hidden md:block">
+          <span className="text-md text-[#0F172A]">
             {user.email}
           </span>
         </div>
         <button
           onClick={handleSignOut}
-          className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition text-sm"
+          className="px-3 md:px-4 py-2 md:py-3 bg-[#4296FF] text-white rounded-full hover:bg-blue-600 transition-hover duration-200 cursor-pointer"
         >
-          <p className="font-bold">Sign Out</p>
+          <p className="text-sm md:text-md font-bold">Sign Out</p>
         </button>
       </div>
     );
@@ -56,7 +58,7 @@ const AuthButton = ({ user }) => {
   return (
     <button
       onClick={handleSignIn}
-      className="flex items-center gap-2 px-2 md:px-4 py-2 md:py-3 bg-[#4296FF] text-white rounded-lg hover:bg-blue-600 transition-hover duration-200 cursor-pointer"
+      className="flex items-center gap-2 px-2 md:px-4 py-2 md:py-3  bg-[#4296FF] border-3 border-[#4296FF] text-white rounded-full hover:bg-white hover:border-[#4296FF] hover:text-[#4296FF] transition-hover duration-200 cursor-pointer"
     >
       <svg className="w-5 h-5" viewBox="0 0 24 24">
         <path
