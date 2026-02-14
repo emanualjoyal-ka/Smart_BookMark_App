@@ -1,6 +1,6 @@
-# Project Name
+# Smart Bookmark App
 
-> A brief description of your project
+> A modern, real-time bookmark manager that allows users to securely save and manage their favorite web links. The app features Google OAuth authentication for seamless sign-in, ensuring that each user's bookmarks remain private and inaccessible to others. Users can add bookmarks with URLs and titles, view their collection in real-time across multiple browser tabs, and delete bookmarks when no longer needed. Built with Next.js and Supabase, the application leverages real-time database subscriptions for instant updates and is deployed on Vercel for reliable production access.
 
 ## 🚧 Challenges Faced & Solutions
 
