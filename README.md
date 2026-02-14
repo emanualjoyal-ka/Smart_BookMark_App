@@ -2,11 +2,14 @@
 
 > A modern, real-time bookmark manager that allows users to securely save and manage their favorite web links. The app features Google OAuth authentication for seamless sign-in, ensuring that each user's bookmarks remain private and inaccessible to others. Users can add bookmarks with URLs and titles, view their collection in real-time across multiple browser tabs, and delete bookmarks when no longer needed. Built with Next.js and Supabase, the application leverages real-time database subscriptions for instant updates and is deployed on Vercel for reliable production access.
 
+**Technologies used**
+Nextjs, OAuth, Supabase, GSAP
+
 ## 🚧 Challenges Faced & Solutions
 
 Throughout the development of this project, I encountered several technical challenges. Here's a detailed breakdown of each problem and how I resolved them.
 
-### 1. 🔄 Supabase.js createServerClient() Migration
+### 1. Supabase.js createServerClient() Migration
 
 **The Problem:**
 Initially, I implemented the Supabase client using the older approach where cookie handling was done differently. The previous method only required `getAll()` and `setAll()` functions, but the updated `createServerClient()` function requires explicit `get()`, `set()`, and `remove()` methods for cookie management.
@@ -58,11 +61,12 @@ Configured database region closest to target users
 
 Environment Configuration:
 
-```env
+env
+```
 NEXT_PUBLIC_SUPABASE_URL=your_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-Database Schema Setup:
 ```
+Database Schema Setup:
 
 Created necessary tables using SQL editor
 
