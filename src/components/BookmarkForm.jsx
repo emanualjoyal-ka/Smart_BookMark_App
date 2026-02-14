@@ -71,7 +71,7 @@ export default function BookmarkForm({ userId }) {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://example.com"
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
           disabled={loading}
         />
         <p className="text-xs text-gray-500 mt-1">
@@ -89,7 +89,7 @@ export default function BookmarkForm({ userId }) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="My Favorite Website"
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
           disabled={loading}
         />
       </div>
@@ -101,21 +101,32 @@ export default function BookmarkForm({ userId }) {
         </div>
       )}
 
-      {/* Submit Button */}
+     <div className='flex flex-col md:flex-row gap-3 md:gap-5'>
+       {/* Submit Button */}
       <button
         type="submit"
         disabled={loading}
-        className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full px-4 py-2 bg-blue-500 text-white border-2 border-blue-500 rounded-md hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer transition duration-200"
       >
         {loading ? (
           <>
-            <span className="animate-spin">⏳</span>
-            Adding...
+            <p className='font-bold3'>Adding...</p>
           </>
         ) : (
-          '+ Add Bookmark'
+          <p className='font-bold'>Add Bookmark</p>
         )}
       </button>
+      <button
+        onClick={()=>{
+          setUrl(""),
+          setTitle("")
+        }}
+        type='button'
+        className="w-full px-4 py-2 hover:bg-blue-500  border-2 border-blue-500 text-blue-500 hover:text-white rounded-md hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer transition duration-200"
+      >
+          <p className='font-bold'>Clear</p>
+      </button>
+     </div>
     </form>
   )
 }

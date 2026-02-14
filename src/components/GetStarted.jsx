@@ -2,7 +2,7 @@
 import { createClient } from '@/lib/supabase-browser';
 import React from 'react'
 
-const GetStarted = () => {
+const GetStarted = ({id}) => {
 
      const supabasesignin = createClient();
 
@@ -25,7 +25,7 @@ const GetStarted = () => {
 
 
   return (
-     <div className="mt-12 p-8 bg-blue-50 rounded-lg w-full">
+     <div id={id} className="mt-12 p-8 bg-blue-50 rounded-lg w-full">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
             Ready to get started?
           </h2>

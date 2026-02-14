@@ -46,7 +46,7 @@ const AuthButton = ({ user }) => {
         </div>
         <button
           onClick={handleSignOut}
-          className="px-3 md:px-4 py-2 md:py-3 bg-[#4296FF] text-white rounded-full hover:bg-blue-600 transition-hover duration-200 cursor-pointer"
+          className="px-3 md:px-4 py-2 md:py-3 bg-[#4296FF] text-white border-3 border-[#4296FF] hover:bg-transparent hover:text-[#4296FF] rounded-full hover:bg-blue-600 transition-hover duration-200 cursor-pointer"
         >
           <p className="text-sm md:text-md font-bold">Sign Out</p>
         </button>
@@ -58,7 +58,7 @@ const AuthButton = ({ user }) => {
   return (
     <button
       onClick={handleSignIn}
-      className="flex items-center gap-2 px-2 md:px-4 py-2 md:py-3  bg-[#4296FF] border-3 border-[#4296FF] text-white rounded-full hover:bg-white hover:border-[#4296FF] hover:text-[#4296FF] transition-hover duration-200 cursor-pointer"
+      className="flex items-center gap-2 px-2 md:px-4 py-2 md:py-3  bg-[#4296FF] border-3 border-[#4296FF] text-white rounded-full hover:bg-transparent hover:border-[#4296FF] hover:text-[#4296FF] transition-hover duration-200 cursor-pointer"
     >
       <svg className="w-5 h-5" viewBox="0 0 24 24">
         <path

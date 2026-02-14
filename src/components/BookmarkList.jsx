@@ -121,7 +121,7 @@ export default function BookmarkList({ userId }) {
       {bookmarks.map((bookmark) => (
         <div
           key={bookmark.id}
-          className="group flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
+          className="group flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-200"
         >
           {/* Bookmark Info */}
           <div className="flex-1 min-w-0">
@@ -149,7 +149,7 @@ export default function BookmarkList({ userId }) {
           {/* Delete Button */}
           <button
             onClick={() => handleDelete(bookmark.id, bookmark.title)}
-            className="ml-4 p-2 text-gray-400 hover:text-red-500 transition opacity-0 group-hover:opacity-100"
+            className="ml-4 p-2 text-gray-400 hover:text-red-500 cursor-pointer transition opacity-0 group-hover:opacity-100"
             title="Delete bookmark"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

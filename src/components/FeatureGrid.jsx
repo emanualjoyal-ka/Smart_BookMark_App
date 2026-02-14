@@ -1,9 +1,10 @@
+"use client"
 
-
-const FeatureGrid = () => {
+const FeatureGrid = ({id}) => {
 
     const features=[
         {
+            
             icon:'🔒',
             title:'Private & Secure',
             description:'Your bookmarks are private. Only you can see them.'
@@ -28,7 +29,7 @@ const FeatureGrid = () => {
             //     <h3 className="font-semibold text-center mb-2">{items.title}</h3>
             //     <p className="text-gray-600 text-center text-sm">{items.description}</p>
             // </div>
-            <div className="relative rounded-xl overflow-hidden">
+            <div id={id} className="relative rounded-xl overflow-hidden">
   
             <div className={`absolute inset-0 
                 bg-[#4296FF] 
