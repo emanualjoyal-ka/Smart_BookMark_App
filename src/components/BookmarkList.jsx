@@ -5,11 +5,14 @@
 
 import { createClient } from '@/lib/supabase-browser'
 import { useState, useEffect } from 'react'
+import ConfirmModal from './ConfirmModal'
 
 export default function BookmarkList({ userId }) {
 //   State
   const [bookmarks, setBookmarks] = useState([])  // List of bookmarks
   const [loading, setLoading] = useState(true)    // Are we loading?
+  const [bookmarkToDelete, setBookmarkToDelete] = useState(null)
+const [deleting, setDeleting] = useState(false)
   const supabase = createClient()
 
   // useEffect = "Do this when component starts"
@@ -73,24 +76,27 @@ export default function BookmarkList({ userId }) {
   }
 
   // Delete a bookmark
-  const handleDelete = async (id, title) => {
-    // Ask for confirmation
-    if (!confirm(`Delete "${title}"?`)) return
+ const confirmDelete = async () => {
+  if (!bookmarkToDelete) return
 
-    try {
-      const { error } = await supabase
-        .from('bookmarks')
-        .delete()
-        .eq('id', id)
+  try {
+    setDeleting(true)
 
-      if (error) throw error
-      // No need to update state - realtime will do it!
-      
-    } catch (error) {
-      console.error('Error deleting bookmark:', error)
-      alert('Failed to delete bookmark')
-    }
+    const { error } = await supabase
+      .from('bookmarks')
+      .delete()
+      .eq('id', bookmarkToDelete.id)
+
+    if (error) throw error
+
+    setBookmarkToDelete(null)
+
+  } catch (error) {
+    console.error('Error deleting bookmark:', error)
+  } finally {
+    setDeleting(false)
   }
+}
 
   // Show loading spinner
   if (loading) {
@@ -148,7 +154,7 @@ export default function BookmarkList({ userId }) {
           
           {/* Delete Button */}
           <button
-            onClick={() => handleDelete(bookmark.id, bookmark.title)}
+            onClick={() => setBookmarkToDelete(bookmark)}
             className="ml-4 p-2 text-gray-400 hover:text-red-500 cursor-pointer transition opacity-0 group-hover:opacity-100"
             title="Delete bookmark"
           >
@@ -158,6 +164,16 @@ export default function BookmarkList({ userId }) {
           </button>
         </div>
       ))}
+      <ConfirmModal
+  isOpen={!!bookmarkToDelete}
+  title="Delete Bookmark"
+  message={`Are you sure you want to delete "${bookmarkToDelete?.title}"?`}
+  confirmText="Delete"
+  cancelText="Cancel"
+  onConfirm={confirmDelete}
+  onCancel={() => setBookmarkToDelete(null)}
+  loading={deleting}
+/>
     </div>
   )
 }
