@@ -24,11 +24,6 @@ const FeatureGrid = ({id}) => {
   return (
      <div className="grid md:grid-cols-3 gap-6 mt-12">
           {features.map((items,index)=>(
-            // <div key={index} className="p-6 bg-white rounded-lg shadow-sm hover:shadow-xl  hover:transform hover:scale-105 hover:translate-y-[-10px] transition-transform duration-200">
-            //     <p className="text-3xl text-center mb-3">{items.icon}</p>
-            //     <h3 className="font-semibold text-center mb-2">{items.title}</h3>
-            //     <p className="text-gray-600 text-center text-sm">{items.description}</p>
-            // </div>
             <div id={id} className="relative rounded-xl overflow-hidden">
   
             <div className={`absolute inset-0 

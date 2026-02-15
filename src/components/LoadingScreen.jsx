@@ -24,9 +24,7 @@ const LoadingScreen = ({ children }) => {
         </div>
         <p className="text-[#0F172A] text-xl font-bold md:text-5xl">Smart <span className="text-[#4296FF]">Bookmark</span></p>
        </div>
-        <div className="w-10 h-10 md:w-15 md:h-15 rounded-full border-6 border-[#4296FF] border-t-transparent animate-spin">
-
-        </div>
+        <div className="w-10 h-10 md:w-15 md:h-15 rounded-full border-2 md:border-6 border-[#4296FF] border-t-transparent animate-spin"/>
       </div>
     )
   }

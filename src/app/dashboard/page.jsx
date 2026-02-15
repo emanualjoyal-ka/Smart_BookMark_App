@@ -39,7 +39,7 @@ const supabase = createServerClient(
         <h2 className="text-xl font-semibold mb-4 flex items-center gap-1">
           <span className="w-7 md:w-9 text-[#0F172A]">
             <svg className='w-full h-full' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 6V18M18 12H6" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 6V18M18 12H6" stroke="currentcolor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
           </span>
           Add New Bookmark

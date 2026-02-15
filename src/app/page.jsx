@@ -26,8 +26,6 @@ const supabase = createServerClient(
     redirect('/dashboard')
   }
 
-  
-
   return (
     <HomeClient/>
   )

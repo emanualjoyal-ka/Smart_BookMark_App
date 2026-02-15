@@ -67,7 +67,7 @@ export default function BookmarkForm({ userId }) {
           Website URL
         </label>
         <input
-          type="url"
+          type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://example.com"
