@@ -155,7 +155,7 @@ const [deleting, setDeleting] = useState(false)
           {/* Delete Button */}
           <button
             onClick={() => setBookmarkToDelete(bookmark)}
-            className="ml-4 p-2 text-gray-400 hover:text-red-500 cursor-pointer transition opacity-0 group-hover:opacity-100"
+            className="ml-4 p-2 text-gray-400 hover:text-red-500 cursor-pointer transition"
             title="Delete bookmark"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

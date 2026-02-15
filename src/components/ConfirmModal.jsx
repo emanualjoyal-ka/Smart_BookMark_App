@@ -33,7 +33,7 @@ export default function ConfirmModal({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
+    <div className="fixed inset-0 px-6 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
       
       <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-md animate-fadeIn">
         
